@@ -1,34 +1,69 @@
-# Disease Prediction Toolkit
+# 🩺 Disease Prediction Toolkit
 
-## 📌 Project Overview
-This project is a *Disease Prediction Toolkit* that uses machine learning models (Logistic Regression, Decision Tree, Random Forest, etc.) to predict the likelihood of diseases such as *Heart Disease* based on health data.  
+This project predicts the presence of heart disease using different Machine Learning models.  
+It compares *Logistic Regression, Decision Tree, and Random Forest* and evaluates them with multiple metrics to find the best performing model.
 
-## 🎯 Objectives
-- Learn ML fundamentals and data preprocessing.  
-- Train and test ML models on healthcare datasets.  
-- Evaluate models with accuracy, precision, recall, F1-score, ROC-AUC.  
-- Visualize results with confusion matrix and ROC curve.  
+---
 
-## 🛠 Tech Stack
-- Python  
-- Scikit-learn  
-- Pandas, Numpy  
-- Matplotlib, Seaborn  
+## 📊 Project Overview
+Early disease prediction helps in timely treatment and better patient care.  
+In this project, we used a *Heart Disease Dataset* to train different ML models and evaluate them.  
+The toolkit can be extended to predict other diseases in the future.
+
+---
 
 ## 📂 Dataset
-We use the *Heart Disease dataset* (heart.csv).  
-Source: Kaggle / UCI Repository.  
+- Dataset: heart.csv  
+- Source: UCI Machine Learning
+Repository (Heart Disease Dataset)  
+- Features: Age, Sex, Blood Pressure, Cholesterol, Heart Rate, etc.  
+- Target: Presence (1) or Absence (0) of heart disease  
 
-## 📊 Steps in the Project
-1. Preprocess the dataset (handle missing values, encode categorical data, scaling).  
-2. Train ML models (Logistic Regression, Decision Tree, Random Forest).  
-3. Evaluate models with metrics.  
-4. Visualize results.  
+---
 
-## 🚀 How to Run
-- Open the notebook (.ipynb) in *Google Colab*.  
-- Upload the dataset (heart.csv).  
-- Run all cells to train and test models.  
+## ⚙ Technologies Used
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
+- Matplotlib, Seaborn  
 
-## 👩‍💻 Author
-Sujatha Sujatha
+---
+
+## 🤖 Models Implemented
+1. Logistic Regression  
+2. Decision Tree  
+3. Random Forest  
+
+---
+
+## 📈 Evaluation Metrics
+We evaluated models using:  
+- Accuracy  
+- Precision  
+- Recall  
+- F1-score  
+- Confusion Matrix  
+- ROC-AUC Curve  
+
+---
+## 🏆 Results
+
+- *Logistic Regression* → Accuracy ~ 82%  
+- *Decision Tree* → Accuracy ~ 97%  
+- *Random Forest* → Accuracy ~ 98% (Best Model ✅)  
+
+### 🔹 Accuracy Comparison
+![Accuracy Comparison](accuracy_comparison.png)
+
+### 🔹 Confusion Matrix
+![Confusion Matrix](confusion_matrix.png)
+
+### 🔹 ROC Curve
+![ROC Curve](roc_curve.png)
+
+---
+
+## ▶ How to Run the Project
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git 

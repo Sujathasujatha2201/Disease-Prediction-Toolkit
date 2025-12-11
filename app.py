@@ -1,31 +1,4 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
 
-# ==== PAGE CONFIG =====
-st.set_page_config(
-    page_title="Heart Attack Prediction",
-    page_icon="❤️",
-    layout="wide",
-)
-
-# ==== CUSTOM CSS FOR STYLING ====
-st.markdown("""
-    <style>
-        .title {
-            font-size: 36px;
-            font-weight: bold;
-            color: #e63946;
-            text-align: center;
-        }
-        .subtitle {
-            font-size: 20px;
-            text-align: center;
-            color: #457b9d;
         }
         .card {
             padding: 15px;

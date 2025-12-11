@@ -1,4 +1,31 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score
 
+# ==== PAGE CONFIG =====
+st.set_page_config(
+    page_title="Heart Attack Prediction",
+    page_icon="❤️",
+    layout="wide",
+)
+
+# ==== CUSTOM CSS FOR STYLING ====
+st.markdown("""
+    <style>
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #e63946;
+            text-align: center;
+        }
+        .subtitle {
+            font-size: 20px;
+            text-align: center;
+            color: #457b9d;
         }
         .card {
             padding: 15px;
@@ -13,12 +40,11 @@
 # ==== TITLE ====
 st.markdown("<h1 class='title'>❤️ Heart Attack Risk Prediction App</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>A Machine Learning-based Smart Health Assessment Tool</p>", unsafe_allow_html=True)
-
 st.write("___")
 
 # ==== SIDEBAR ====
 st.sidebar.title("🔍 Navigation")
-page = st.sidebar.radio("Go to", ["🏠 Home", "📝 Predict Risk", "📘 About Dataset", "📄 Project Info"])
+page = st.sidebar.radio("Go to", ["📝 Predict Risk", "📘 About Dataset"])
 
 # ==== LOAD DATA ====
 @st.cache_data
@@ -27,7 +53,7 @@ def load_data():
 
 df = load_data()
 
-# Prepare model only once
+# Prepare model
 X = df.drop("target", axis=1)
 y = df["target"]
 
@@ -43,37 +69,7 @@ model.fit(X_train, y_train)
 acc = accuracy_score(y_test, model.predict(X_test))
 
 # ===========================
-#        PAGE 1 – HOME
-# ===========================
-if page == "🏠 Home":
-    st.markdown("### 📊 Project Summary")
-    
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("<div class='card'>"
-                    "<h4>💡 What This App Does</h4>"
-                    "Predicts the possibility of a <b>heart attack</b> using a trained ML model."
-                    "</div>", unsafe_allow_html=True)
-
-    with col2:
-        st.markdown(f"<div class='card'>"
-                    "<h4>🤖 ML Model Accuracy</h4>"
-                    f"<h2 style='color:#e63946;'>{acc*100:.2f}%</h2>"
-                    "</div>", unsafe_allow_html=True)
-
-    st.markdown("### 🧠 Why Heart Attack Prediction?")
-    st.write("""
-    - Early detection can save lives  
-    - Helps identify risk factors  
-    - Supports doctors and health assessment  
-    - Useful for personal health awareness  
-    """)
-
-    st.image("https://www.narayanahealth.org/sites/default/files/2022-07/Heart-Attack.jpg", use_column_width=True)
-
-# ===========================
-#   PAGE 2 – PREDICT RISK
+#   PAGE 1 – PREDICT RISK
 # ===========================
 if page == "📝 Predict Risk":
     st.header("📝 Enter Your Health Details")
@@ -97,15 +93,10 @@ if page == "📝 Predict Risk":
 
     cp = st.selectbox("Chest Pain Type", 
                       ["Typical Angina", "Atypical Angina", "Non-anginal Pain", "Asymptomatic"])
-
     restecg = st.selectbox("Resting ECG Result", 
                            ["Normal", "ST-T abnormality", "Left ventricular hypertrophy"])
-
-    slope = st.selectbox("Slope of ST Segment", 
-                         ["Upsloping", "Flat", "Downsloping"])
-
-    thal = st.selectbox("Thalassemia Result", 
-                        ["Normal", "Fixed Defect", "Reversible Defect"])
+    slope = st.selectbox("Slope of ST Segment", ["Upsloping", "Flat", "Downsloping"])
+    thal = st.selectbox("Thalassemia Result", ["Normal", "Fixed Defect", "Reversible Defect"])
 
     # Convert to numeric
     sex = 1 if sex == "Male" else 0
@@ -134,7 +125,7 @@ if page == "📝 Predict Risk":
             st.info("Maintain a healthy lifestyle!")
 
 # ===========================
-#   PAGE 3 – ABOUT DATASET
+#   PAGE 2 – ABOUT DATASET
 # ===========================
 if page == "📘 About Dataset":
     st.header("📘 Dataset Information")
@@ -157,28 +148,3 @@ if page == "📘 About Dataset":
     - **ca**: Major Vessels  
     - **thal**: Thalassemia  
     """)
-
-# ===========================
-#   PAGE 4 – PROJECT INFO
-# ===========================
-if page == "📄 Project Info":
-    st.header("📄 Project Details")
-
-    st.write("""
-    ### 🏆 Why This Project Is Best?
-    - Professional UI  
-    - Machine Learning model  
-    - User-friendly inputs  
-    - Real-time prediction  
-    - Clean structure  
-    """)
-
-    st.write("""
-    ### 📚 Ideal For:
-    - B.Tech / MCA / MSc Projects  
-    - Hackathons  
-    - Resume & Portfolio  
-    - Internship Submission  
-    """)
-
-    st.success("If you want, I can also generate your **full project report**, PPT, UML diagrams & documentation.")

@@ -1,19 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
-
-# ==== PAGE CONFIG =====
-st.set_page_config(
-    page_title="Heart Attack Prediction",
-    page_icon="❤️",
-    layout="wide",
-)
-
-# ==== CUSTOM CSS FOR STYLING ====
 st.markdown("""
     <style>
         .title {

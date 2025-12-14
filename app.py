@@ -86,7 +86,9 @@ if page == "📝 Predict Risk" and disease == "Heart Disease":
     with col3:
         exang = st.selectbox("Exercise-Induced Angina?", ["No", "Yes"])
         oldpeak = st.number_input("Oldpeak (ECG Depression)", 0.0, 10.0, 1.0)
-        ca = st.selectbox("Number of Major Vessels (0–3)", [0, 1, 2, 3])cp = st.selectbox(
+        ca = st.selectbox("Number of Major Vessels (0–3)", [0, 1, 2, 3])
+
+    cp = st.selectbox(
         "Chest Pain Type",
         ["Typical Angina", "Atypical Angina", "Non-anginal Pain", "Asymptomatic"]
     )
@@ -185,7 +187,7 @@ if page == "📝 Predict Risk" and disease == "Heart Disease":
             st.write("- Exercise at least 30 minutes daily")
             st.write("- Monitor blood pressure and cholesterol")
 
- else:
+        else:
             st.write("- Consult a cardiologist immediately")
             st.write("- Follow medical advice strictly")
             st.write("- Regular heart checkups are necessary")
